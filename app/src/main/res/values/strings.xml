@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CMRI</string>
+    <string name="slide_1_title">Meter Reading Through Serial Port</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="Single_phase">Single Phase</string>
+    <string name="Three_phase">Three Phase</string>
+
+    <string name="fulldata">Full Data</string>
+    <string name="previous_read">Previous Read</string>
+    <string name="present_read">Present Read</string>
+
+    <string name="buttonClear">Clear</string>
+    <string name="disconnect">Disconnected</string>
+    <string name="connected">Connected</string>
+
+    <string name="company_details">© 2019 Transvision Software &amp; Data Solutions Pvt Ltd.\n
+        All Rights Reserved\n<u>www.transvisionsolutions.com</u></string>
+</resources>
