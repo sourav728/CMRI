@@ -8,6 +8,7 @@
 
     <string name="Single_phase">Single Phase</string>
     <string name="Three_phase">Three Phase</string>
+    <string name="convert_xml">Convert XML</string>
 
     <string name="fulldata">Full Data</string>
     <string name="previous_read">Previous Read</string>

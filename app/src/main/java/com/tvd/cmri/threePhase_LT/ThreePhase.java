@@ -79,8 +79,9 @@ public class ThreePhase extends AppCompatActivity {
     private static final String PREFERENCE = "CMRI";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    /*SharedPreferences sharedPreferences = getSharedPreferences("CMRI",MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPreferences.edit();*/
+    boolean pres_read = false, previous_read = false, full_reading = false;
+    private String filename = "";
+
     private final ServiceConnection usbConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName arg0, IBinder arg1) {
@@ -161,6 +162,9 @@ public class ThreePhase extends AppCompatActivity {
                         }
                         //display.append(Character.toString(data[i]));
                         usbService.write(Character.toString(data[i]).getBytes(StandardCharsets.US_ASCII));
+                        pres_read = true;
+                        previous_read = false;
+                        full_reading = false;
                     }
                 } else
                     Toast.makeText(ThreePhase.this, "Please Connect with Serial Port!!", Toast.LENGTH_SHORT).show();
@@ -220,6 +224,9 @@ public class ThreePhase extends AppCompatActivity {
                         }
                         //display.append(Character.toString(data[i]));
                         usbService.write(Character.toString(data[i]).getBytes(StandardCharsets.US_ASCII));
+                        full_reading = true;
+                        previous_read = false;
+                        pres_read = false;
                     }
                 } else
                     Toast.makeText(ThreePhase.this, "Please Connect with Serial Port!!", Toast.LENGTH_SHORT).show();
@@ -278,6 +285,9 @@ public class ThreePhase extends AppCompatActivity {
                         }
                         //display.append(Character.toString(data[i]));
                         usbService.write(Character.toString(data[i]).getBytes(StandardCharsets.US_ASCII));
+                        previous_read = true;
+                        pres_read = false;
+                        full_reading = false;
                     }
                 } else
                     Toast.makeText(ThreePhase.this, "Please Connect with Serial Port!!", Toast.LENGTH_SHORT).show();
@@ -289,9 +299,7 @@ public class ThreePhase extends AppCompatActivity {
         clrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 display.setText("");
-
             }
         });
     }
@@ -421,7 +429,13 @@ public class ThreePhase extends AppCompatActivity {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            String filename = "Optical" + ".txt";
+            if (pres_read) {
+                filename = "Optical_Presreading" + ".txt";
+            } else if (previous_read) {
+                filename = "Optical_Prevreading" + ".txt";
+            } else if (full_reading) {
+                filename = "Optical_Fullreading" + ".txt";
+            }
             File reportFile = new File(dir, filename);
             FileWriter fileWriter = new FileWriter(reportFile);
             fileWriter.append(currentStacktrace);
@@ -438,7 +452,14 @@ public class ThreePhase extends AppCompatActivity {
         BufferedReader reader;
         File dir = new File(Environment.getExternalStorageDirectory(),
                 "Opticals_3Phase");
-        String filename = "Optical" + ".txt";
+
+        if (pres_read) {
+            filename = "Optical_Presreading" + ".txt";
+        } else if (previous_read) {
+            filename = "Optical_Prevreading" + ".txt";
+        } else if (full_reading) {
+            filename = "Optical_Fullreading" + ".txt";
+        }
         File reportFile = new File(dir, filename);
         try {
             if (reportFile.exists()) {

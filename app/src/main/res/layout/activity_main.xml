@@ -38,4 +38,21 @@
         app:strokeWidth="2dp"
         tools:ignore="MissingConstraints" />
 
+    <android.support.design.button.MaterialButton
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/btn_xml"
+        android:layout_below="@+id/btn_three_phase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/convert_xml"
+        android:textAllCaps="false"
+        android:textColor="@color/textColorPrimary"
+        android:theme="@style/MaterialComponentsAppTheme"
+        app:backgroundTint="@color/button_color"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/colorPrimary"
+        app:strokeWidth="2dp"
+        tools:ignore="MissingConstraints" />
 </RelativeLayout>

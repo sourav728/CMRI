@@ -29,4 +29,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //noinspection GradlePath
     implementation files('libs\\usbserial.jar')
+    implementation files('libs\\commons-io-2.4.jar')
 }
