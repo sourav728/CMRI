@@ -1,6 +1,7 @@
 package com.tvd.cmri.other;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 public class FunctionCall {
 
@@ -24,5 +25,15 @@ public class FunctionCall {
 
     public String Appfoldername() {
         return "Opticals_3Phase";
+    }
+
+    public String decimalroundoff(double value) {
+        BigDecimal a = new BigDecimal(value);
+        BigDecimal roundOff = a.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        return "" + roundOff;
+    }
+
+    public int findInStr(String s1, char c){
+        return s1.indexOf(c);
     }
 }

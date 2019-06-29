@@ -39,7 +39,6 @@
         tools:ignore="MissingConstraints" />
 
     <android.support.design.button.MaterialButton
-        android:visibility="gone"
         android:layout_centerInParent="true"
         android:id="@+id/btn_xml"
         android:layout_below="@+id/btn_three_phase"
