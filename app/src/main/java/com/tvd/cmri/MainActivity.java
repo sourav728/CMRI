@@ -444,8 +444,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             g24.appendChild(document.createTextNode("Mains"));
             di.appendChild(g24);
 
-            //For G25 tag
-            Element g25 = document.createElement("G25");
+            //For G27 tag
+            Element g25 = document.createElement("G27");
             g25.appendChild(document.createTextNode("VALID"));
             di.appendChild(g25);
 
@@ -784,7 +784,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B46.setAttributeNode(B46attr1);
 
             Attr B46attr2 = document.createAttribute("PARAMCODE");
-            B46attr2.setValue("P7-1-6-2-0");
+            B46attr2.setValue("P7-2-2-2-0");
             B46.setAttributeNode(B46attr2);
 
             Attr B46attr3 = document.createAttribute("VALUE");
@@ -868,7 +868,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B50.setAttributeNode(B50attr1);
 
             Attr B50attr2 = document.createAttribute("PARAMCODE");
-            B50attr2.setValue("P7-1-5-2-0");
+            B50attr2.setValue("P7-2-1-2-0");
             B50.setAttributeNode(B50attr2);
 
             Attr B50attr3 = document.createAttribute("VALUE");
@@ -889,7 +889,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B51.setAttributeNode(B51attr1);
 
             Attr B51attr2 = document.createAttribute("PARAMCODE");
-            B51attr2.setValue("P7-1-5-2-0");
+            B51attr2.setValue("P7-2-4-2-0");
             B51.setAttributeNode(B51attr2);
 
             Attr B51attr3 = document.createAttribute("VALUE");
@@ -1147,7 +1147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B63.setAttributeNode(B63attr1);
 
             Attr B63attr2 = document.createAttribute("PARAMCODE");
-            B63attr2.setValue("P7-2-2-2-0");
+            B63attr2.setValue("P7-2-3-2-0");
             B63.setAttributeNode(B63attr2);
 
             Attr B63attr3 = document.createAttribute("VALUE");
@@ -1311,7 +1311,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B70.setAttributeNode(B70attr4);
 
 
-            //8th B4 with tod 2
+            //8th B4 with tod 3
             /***********/
             Element B71 = document.createElement("B4");
             d301.appendChild(B71);
@@ -1349,6 +1349,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B72attr4.setValue("k");
             B72.setAttributeNode(B72attr4);
 
+            Attr B72attr5 = document.createAttribute("OCCDATE");
+            B72attr5.setValue("");
+            B72.setAttributeNode(B72attr5);
+
             //2nd B5
             Element B73 = document.createElement("B5");
             d301.appendChild(B73);
@@ -1365,6 +1369,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B73attr4.setValue("k");
             B73.setAttributeNode(B73attr4);
 
+            Attr B73attr5 = document.createAttribute("OCCDATE");
+            B73attr5.setValue("");
+            B73.setAttributeNode(B73attr5);
+
             //3rd B5
             Element B74 = document.createElement("B5");
             d301.appendChild(B74);
@@ -1380,6 +1388,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Attr B74attr4 = document.createAttribute("UNIT");
             B74attr4.setValue("k");
             B74.setAttributeNode(B74attr4);
+
+            Attr B74attr5 = document.createAttribute("OCCDATE");
+            B74attr5.setValue("");
+            B74.setAttributeNode(B74attr5);
 
             /****B6****/
             //1st B6 tod 0
@@ -1719,7 +1731,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B92.setAttributeNode(B92attr3);
 
 
-            //2nd B10 tod 3
+            //2nd B10 tod 0
             Element B93 = document.createElement("B10");
             d301.appendChild(B93);
 
@@ -1773,7 +1785,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             d301.appendChild(B96);
 
             Attr B96attr1 = document.createAttribute("TOD");
-            B96attr1.setValue("3");
+            B96attr1.setValue("2");
             B96.setAttributeNode(B96attr1);
 
             Attr B96attr2 = document.createAttribute("PARAMCODE");
@@ -1789,7 +1801,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             d301.appendChild(B97);
 
             Attr B97attr1 = document.createAttribute("TOD");
-            B97attr1.setValue("3");
+            B97attr1.setValue("2");
             B97.setAttributeNode(B97attr1);
 
             Attr B97attr2 = document.createAttribute("PARAMCODE");
@@ -1826,7 +1838,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B99.setAttributeNode(B99attr1);
 
             Attr B99attr2 = document.createAttribute("PARAMCODE");
-            B99attr2.setValue("P4-4-4-1-0");
+            B99attr2.setValue("P4-4-4-2-0");
             B99.setAttributeNode(B99attr2);
 
             Attr B99attr3 = document.createAttribute("VALUE");
@@ -2123,7 +2135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B114.setAttributeNode(B114attr1);
 
             Attr B114attr2 = document.createAttribute("PARAMCODE");
-            B114attr2.setValue("P7-1-6-2-0");
+            B114attr2.setValue("P7-2-2-2-0");
             B114.setAttributeNode(B114attr2);
 
             Attr B114attr3 = document.createAttribute("VALUE");
@@ -2207,7 +2219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B118.setAttributeNode(B118attr1);
 
             Attr B118attr2 = document.createAttribute("PARAMCODE");
-            B118attr2.setValue("P7-1-5-2-0");
+            B118attr2.setValue("P7-2-1-2-0");
             B118.setAttributeNode(B118attr2);
 
             Attr B118attr3 = document.createAttribute("VALUE");
@@ -2228,7 +2240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B119.setAttributeNode(B119attr1);
 
             Attr B119attr2 = document.createAttribute("PARAMCODE");
-            B119attr2.setValue("P7-1-5-2-0");
+            B119attr2.setValue("P7-2-4-2-0");
             B119.setAttributeNode(B119attr2);
 
             Attr B119attr3 = document.createAttribute("VALUE");
@@ -2486,7 +2498,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B131.setAttributeNode(B131attr1);
 
             Attr B131attr2 = document.createAttribute("PARAMCODE");
-            B131attr2.setValue("P7-2-2-2-0");
+            B131attr2.setValue("P7-2-3-2-0");
             B131.setAttributeNode(B131attr2);
 
             Attr B131attr3 = document.createAttribute("VALUE");
