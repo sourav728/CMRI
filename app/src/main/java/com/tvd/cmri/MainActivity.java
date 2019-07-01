@@ -1322,7 +1322,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             /****B5*****/
             //1st B5
-            Element B72 = document.createElement("B4");
+            Element B72 = document.createElement("B5");
             d301.appendChild(B72);
 
             Attr B72attr2 = document.createAttribute("PARAMCODE");
@@ -1338,7 +1338,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B72.setAttributeNode(B72attr4);
 
             //2nd B5
-            Element B73 = document.createElement("B4");
+            Element B73 = document.createElement("B5");
             d301.appendChild(B73);
 
             Attr B73attr2 = document.createAttribute("PARAMCODE");
@@ -1354,7 +1354,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B73.setAttributeNode(B73attr4);
 
             //3rd B5
-            Element B74 = document.createElement("B4");
+            Element B74 = document.createElement("B5");
             d301.appendChild(B74);
 
             Attr B74attr2 = document.createAttribute("PARAMCODE");
@@ -1371,7 +1371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             /****B6****/
             //1st B6 tod 0
-            Element B75 = document.createElement("B4");
+            Element B75 = document.createElement("B6");
             d301.appendChild(B75);
 
             Attr B75attr1 = document.createAttribute("TOD");
@@ -1396,7 +1396,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //2nd B6 tod 0
-            Element B76 = document.createElement("B4");
+            Element B76 = document.createElement("B6");
             d301.appendChild(B76);
 
             Attr B76attr1 = document.createAttribute("TOD");
@@ -1420,7 +1420,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B76.setAttributeNode(B76attr5);
 
             //3rd B6 tod 0
-            Element B77 = document.createElement("B4");
+            Element B77 = document.createElement("B6");
             d301.appendChild(B77);
 
             Attr B77attr1 = document.createAttribute("TOD");
@@ -1444,7 +1444,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B77.setAttributeNode(B77attr5);
 
             //1st B6 tod 1
-            Element B78 = document.createElement("B4");
+            Element B78 = document.createElement("B6");
             d301.appendChild(B78);
 
             Attr B78attr1 = document.createAttribute("TOD");
@@ -1469,7 +1469,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //2nd B6 tod 1
-            Element B79 = document.createElement("B4");
+            Element B79 = document.createElement("B6");
             d301.appendChild(B79);
 
             Attr B79attr1 = document.createAttribute("TOD");
@@ -1493,7 +1493,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B79.setAttributeNode(B79attr5);
 
             //3rd B6 tod 1
-            Element B80 = document.createElement("B4");
+            Element B80 = document.createElement("B6");
             d301.appendChild(B80);
 
             Attr B80attr1 = document.createAttribute("TOD");
@@ -1517,7 +1517,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B80.setAttributeNode(B80attr5);
 
             //1st B6 tod 2
-            Element B81 = document.createElement("B4");
+            Element B81 = document.createElement("B6");
             d301.appendChild(B81);
 
             Attr B81attr1 = document.createAttribute("TOD");
@@ -1542,7 +1542,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //2nd B6 tod 2
-            Element B82 = document.createElement("B4");
+            Element B82 = document.createElement("B6");
             d301.appendChild(B82);
 
             Attr B82attr1 = document.createAttribute("TOD");
@@ -1566,7 +1566,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B82.setAttributeNode(B82attr5);
 
             //3rd B6 tod 2
-            Element B83 = document.createElement("B4");
+            Element B83 = document.createElement("B6");
             d301.appendChild(B83);
 
             Attr B83attr1 = document.createAttribute("TOD");
@@ -1590,7 +1590,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B83.setAttributeNode(B83attr5);
 
             //1st B6 tod 3
-            Element B84 = document.createElement("B4");
+            Element B84 = document.createElement("B6");
             d301.appendChild(B84);
 
             Attr B84attr1 = document.createAttribute("TOD");
@@ -1615,7 +1615,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //2nd B6 tod 3
-            Element B85 = document.createElement("B4");
+            Element B85 = document.createElement("B6");
             d301.appendChild(B85);
 
             Attr B85attr1 = document.createAttribute("TOD");
@@ -1638,12 +1638,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B85attr5.setValue("");
             B85.setAttributeNode(B85attr5);
 
-            //3rd B6 tod 2
-            Element B86 = document.createElement("B4");
+            //3rd B6 tod 3
+            Element B86 = document.createElement("B6");
             d301.appendChild(B86);
 
             Attr B86attr1 = document.createAttribute("TOD");
-            B86attr1.setValue("2");
+            B86attr1.setValue("3");
             B86.setAttributeNode(B86attr1);
 
             Attr B86attr2 = document.createAttribute("PARAMCODE");
@@ -1663,81 +1663,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B86.setAttributeNode(B86attr5);
 
 
-            //1st B6 tod 3
-            Element B87 = document.createElement("B4");
-            d301.appendChild(B87);
 
-            Attr B87attr1 = document.createAttribute("TOD");
-            B87attr1.setValue("3");
-            B87.setAttributeNode(B87attr1);
-
-            Attr B87attr2 = document.createAttribute("PARAMCODE");
-            B87attr2.setValue("P7-6-5-2-0");
-            B87.setAttributeNode(B87attr2);
-
-            Attr B87attr3 = document.createAttribute("VALUE");
-            B87attr3.setValue("0");
-            B87.setAttributeNode(B87attr3);
-
-            Attr B87attr4 = document.createAttribute("UNIT");
-            B87attr4.setValue("k");
-            B87.setAttributeNode(B87attr4);
-
-            Attr B87attr5 = document.createAttribute("OCCDATE");
-            B87attr5.setValue("");
-            B87.setAttributeNode(B87attr5);
-
-
-            //2nd B6 tod 3
-            Element B88 = document.createElement("B4");
-            d301.appendChild(B88);
-
-            Attr B88attr1 = document.createAttribute("TOD");
-            B88attr1.setValue("3");
-            B88.setAttributeNode(B88attr1);
-
-            Attr B88attr2 = document.createAttribute("PARAMCODE");
-            B88attr2.setValue("P7-4-5-2-0");
-            B88.setAttributeNode(B88attr2);
-
-            Attr B88attr3 = document.createAttribute("VALUE");
-            B88attr3.setValue("0");
-            B88.setAttributeNode(B88attr3);
-
-            Attr B88attr4 = document.createAttribute("UNIT");
-            B88attr4.setValue("k");
-            B88.setAttributeNode(B88attr4);
-
-            Attr B88attr5 = document.createAttribute("OCCDATE");
-            B88attr5.setValue("");
-            B88.setAttributeNode(B88attr5);
-
-            //3rd B6 tod 3
-            Element B89 = document.createElement("B4");
-            d301.appendChild(B89);
-
-            Attr B89attr1 = document.createAttribute("TOD");
-            B89attr1.setValue("3");
-            B89.setAttributeNode(B89attr1);
-
-            Attr B89attr2 = document.createAttribute("PARAMCODE");
-            B89attr2.setValue("P7-5-1-2-0");
-            B89.setAttributeNode(B89attr2);
-
-            Attr B89attr3 = document.createAttribute("VALUE");
-            B89attr3.setValue("0");
-            B89.setAttributeNode(B89attr3);
-
-            Attr B89attr4 = document.createAttribute("UNIT");
-            B89attr4.setValue("k");
-            B89.setAttributeNode(B89attr4);
-
-            Attr B89attr5 = document.createAttribute("OCCDATE");
-            B89attr5.setValue("");
-            B89.setAttributeNode(B89attr5);
 
             //1st B9
-            Element B90 = document.createElement("B4");
+            Element B90 = document.createElement("B9");
             d301.appendChild(B90);
 
             Attr B90attr2 = document.createAttribute("PARAMCODE");
@@ -1749,7 +1678,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B90.setAttributeNode(B90attr3);
 
             //2nd B6
-            Element B91 = document.createElement("B4");
+            Element B91 = document.createElement("B9");
             d301.appendChild(B91);
 
             Attr B91attr2 = document.createAttribute("PARAMCODE");
@@ -1762,7 +1691,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //1st B10 tod 0
-            Element B92 = document.createElement("B4");
+            Element B92 = document.createElement("B10");
             d301.appendChild(B92);
 
             Attr B92attr1 = document.createAttribute("TOD");
@@ -1778,8 +1707,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B92.setAttributeNode(B92attr3);
 
 
-            //2nd B6 tod 3
-            Element B93 = document.createElement("B4");
+            //2nd B10 tod 3
+            Element B93 = document.createElement("B10");
             d301.appendChild(B93);
 
             Attr B93attr1 = document.createAttribute("TOD");
@@ -1796,7 +1725,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //3rd B10 tod 1
-            Element B94 = document.createElement("B4");
+            Element B94 = document.createElement("B10");
             d301.appendChild(B94);
 
             Attr B94attr1 = document.createAttribute("TOD");
@@ -1804,7 +1733,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B94.setAttributeNode(B94attr1);
 
             Attr B94attr2 = document.createAttribute("PARAMCODE");
-            B94attr2.setValue("P7-5-1-2-0");
+            B94attr2.setValue("P4-4-4-1-0");
             B94.setAttributeNode(B94attr2);
 
             Attr B94attr3 = document.createAttribute("VALUE");
@@ -1812,7 +1741,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B94.setAttributeNode(B94attr3);
 
             //4th B10 tod 1
-            Element B95 = document.createElement("B4");
+            Element B95 = document.createElement("B10");
             d301.appendChild(B95);
 
             Attr B95attr1 = document.createAttribute("TOD");
@@ -1827,12 +1756,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B95attr3.setValue("0");
             B95.setAttributeNode(B95attr3);
 
-            //5th B10 tod 2
+            //5th B10 tod 3
             Element B96 = document.createElement("B4");
             d301.appendChild(B96);
 
             Attr B96attr1 = document.createAttribute("TOD");
-            B96attr1.setValue("2");
+            B96attr1.setValue("3");
             B96.setAttributeNode(B96attr1);
 
             Attr B96attr2 = document.createAttribute("PARAMCODE");
@@ -1843,12 +1772,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B96attr3.setValue("0");
             B96.setAttributeNode(B96attr3);
 
-            //6th B10 tod 2
-            Element B97 = document.createElement("B4");
+            //6th B10 tod 3
+            Element B97 = document.createElement("B10");
             d301.appendChild(B97);
 
             Attr B97attr1 = document.createAttribute("TOD");
-            B97attr1.setValue("2");
+            B97attr1.setValue("3");
             B97.setAttributeNode(B97attr1);
 
             Attr B97attr2 = document.createAttribute("PARAMCODE");
@@ -1858,7 +1787,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Attr B97attr3 = document.createAttribute("VALUE");
             B97attr3.setValue("0");
             B97.setAttributeNode(B97attr3);
-
+            /*************/
+            /******START*****/
             //7th B10 tod 3
             Element B98 = document.createElement("B4");
             d301.appendChild(B98);
@@ -2043,10 +1973,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B107.setAttributeNode(B107attr3);
             //End
 
+            /*******D3-02 part******/
             /*****B4 Series Repetation******/
-//first B4 tag
+            //first B4 tag
             Element B108 = document.createElement("B4");
-            d301.appendChild(B108);
+            d302.appendChild(B108);
 
             Attr B108attr1 = document.createAttribute("TOD");
             B108attr1.setValue("0");
@@ -2067,7 +1998,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //second B4 tag
             Element B109 = document.createElement("B4");
-            d301.appendChild(B109);
+            d302.appendChild(B109);
 
             Attr B109attr1 = document.createAttribute("TOD");
             B109attr1.setValue("0");
@@ -2088,7 +2019,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //third B4 tag
             Element B110 = document.createElement("B4");
-            d301.appendChild(B110);
+            d302.appendChild(B110);
 
             Attr B110attr1 = document.createAttribute("TOD");
             B110attr1.setValue("0");
@@ -2109,7 +2040,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //fourth B4 tag
             Element B111 = document.createElement("B4");
-            d301.appendChild(B111);
+            d302.appendChild(B111);
 
             Attr B111attr1 = document.createAttribute("TOD");
             B111attr1.setValue("0");
@@ -2131,7 +2062,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //fifth B4 tag
             Element B112 = document.createElement("B4");
-            d301.appendChild(B112);
+            d302.appendChild(B112);
 
             Attr B112attr1 = document.createAttribute("TOD");
             B112attr1.setValue("0");
@@ -2152,7 +2083,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //sixth B4 tag
             Element B113 = document.createElement("B4");
-            d301.appendChild(B113);
+            d302.appendChild(B113);
 
             Attr B113attr1 = document.createAttribute("TOD");
             B113attr1.setValue("0");
@@ -2173,7 +2104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //seventh B4 tag
             Element B114 = document.createElement("B4");
-            d301.appendChild(B114);
+            d302.appendChild(B114);
 
             Attr B114attr1 = document.createAttribute("TOD");
             B114attr1.setValue("0");
@@ -2194,7 +2125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //eight B4 tag
             Element B115 = document.createElement("B4");
-            d301.appendChild(B115);
+            d302.appendChild(B115);
 
             Attr B115attr1 = document.createAttribute("TOD");
             B115attr1.setValue("0");
@@ -2215,7 +2146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //nine B4 with tod 1tag
             Element B116 = document.createElement("B4");
-            d301.appendChild(B116);
+            d302.appendChild(B116);
 
             Attr B116attr1 = document.createAttribute("TOD");
             B116attr1.setValue("1");
@@ -2236,7 +2167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //tenth B4 tag
             Element B117 = document.createElement("B4");
-            d301.appendChild(B117);
+            d302.appendChild(B117);
 
             Attr B117attr1 = document.createAttribute("TOD");
             B117attr1.setValue("1");
@@ -2257,7 +2188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //11th B4 tag
             Element B118 = document.createElement("B4");
-            d301.appendChild(B118);
+            d302.appendChild(B118);
 
             Attr B118attr1 = document.createAttribute("TOD");
             B118attr1.setValue("1");
@@ -2278,7 +2209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //12th B4 tag
             Element B119 = document.createElement("B4");
-            d301.appendChild(B119);
+            d302.appendChild(B119);
 
             Attr B119attr1 = document.createAttribute("TOD");
             B119attr1.setValue("1");
@@ -2299,7 +2230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //13th B4 tag
             Element B120 = document.createElement("B4");
-            d301.appendChild(B120);
+            d302.appendChild(B120);
 
             Attr B120attr1 = document.createAttribute("TOD");
             B120attr1.setValue("1");
@@ -2320,7 +2251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //14th B4 tag
             Element B121 = document.createElement("B4");
-            d301.appendChild(B121);
+            d302.appendChild(B121);
 
             Attr B121attr1 = document.createAttribute("TOD");
             B121attr1.setValue("1");
@@ -2341,7 +2272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //15th B4 tag
             Element B122 = document.createElement("B4");
-            d301.appendChild(B122);
+            d302.appendChild(B122);
 
             Attr B122attr1 = document.createAttribute("TOD");
             B122attr1.setValue("1");
@@ -2363,7 +2294,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //16th B4 tag
             Element B123 = document.createElement("B4");
-            d301.appendChild(B123);
+            d302.appendChild(B123);
 
             Attr B123attr1 = document.createAttribute("TOD");
             B123attr1.setValue("1");
@@ -2385,7 +2316,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //1st B4 with tod 2
             /***********/
             Element B124 = document.createElement("B4");
-            d301.appendChild(B124);
+            d302.appendChild(B124);
 
             Attr B124attr1 = document.createAttribute("TOD");
             B124attr1.setValue("2");
@@ -2407,7 +2338,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //2nd B4 with tod 2
             /***********/
             Element B125 = document.createElement("B4");
-            d301.appendChild(B125);
+            d302.appendChild(B125);
 
             Attr B125attr1 = document.createAttribute("TOD");
             B125attr1.setValue("2");
@@ -2428,7 +2359,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //3rd B4 with tod 2
             /***********/
             Element B126 = document.createElement("B4");
-            d301.appendChild(B126);
+            d302.appendChild(B126);
 
             Attr B126attr1 = document.createAttribute("TOD");
             B126attr1.setValue("2");
@@ -2450,7 +2381,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //4th B4 with tod 2
             /***********/
             Element B127 = document.createElement("B4");
-            d301.appendChild(B127);
+            d302.appendChild(B127);
 
             Attr B127attr1 = document.createAttribute("TOD");
             B127attr1.setValue("2");
@@ -2471,7 +2402,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //5th B4 with tod 2
             /***********/
             Element B128 = document.createElement("B4");
-            d301.appendChild(B128);
+            d302.appendChild(B128);
 
             Attr B128attr1 = document.createAttribute("TOD");
             B128attr1.setValue("2");
@@ -2492,7 +2423,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //6th B4 with tod 2
             /***********/
             Element B129 = document.createElement("B4");
-            d301.appendChild(B129);
+            d302.appendChild(B129);
 
             Attr B129attr1 = document.createAttribute("TOD");
             B129attr1.setValue("2");
@@ -2514,7 +2445,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //7th B4 with tod 2
             /***********/
             Element B130 = document.createElement("B4");
-            d301.appendChild(B130);
+            d302.appendChild(B130);
 
             Attr B130attr1 = document.createAttribute("TOD");
             B130attr1.setValue("2");
@@ -2536,7 +2467,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //8th B4 with tod 2
             /***********/
             Element B131 = document.createElement("B4");
-            d301.appendChild(B131);
+            d302.appendChild(B131);
 
             Attr B131attr1 = document.createAttribute("TOD");
             B131attr1.setValue("2");
@@ -2559,7 +2490,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //1st B4 with tod 3
             /***********/
             Element B132 = document.createElement("B4");
-            d301.appendChild(B132);
+            d302.appendChild(B132);
 
             Attr B132attr1 = document.createAttribute("TOD");
             B132attr1.setValue("3");
@@ -2581,7 +2512,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //2nd B4 with tod 3
             /***********/
             Element B133 = document.createElement("B4");
-            d301.appendChild(B133);
+            d302.appendChild(B133);
 
             Attr B133attr1 = document.createAttribute("TOD");
             B133attr1.setValue("3");
@@ -2602,7 +2533,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //3rd B4 with tod 3
             /***********/
             Element B134 = document.createElement("B4");
-            d301.appendChild(B134);
+            d302.appendChild(B134);
 
             Attr B134attr1 = document.createAttribute("TOD");
             B134attr1.setValue("3");
@@ -2624,7 +2555,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //4th B4 with tod 3
             /***********/
             Element B135 = document.createElement("B4");
-            d301.appendChild(B135);
+            d302.appendChild(B135);
 
             Attr B135attr1 = document.createAttribute("TOD");
             B135attr1.setValue("3");
@@ -2645,7 +2576,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //5th B4 with tod 3
             /***********/
             Element B136 = document.createElement("B4");
-            d301.appendChild(B136);
+            d302.appendChild(B136);
 
             Attr B136attr1 = document.createAttribute("TOD");
             B136attr1.setValue("3");
@@ -2666,7 +2597,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //6th B4 with tod 3
             /***********/
             Element B137 = document.createElement("B4");
-            d301.appendChild(B137);
+            d302.appendChild(B137);
 
             Attr B137attr1 = document.createAttribute("TOD");
             B137attr1.setValue("3");
@@ -2688,7 +2619,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //7th B4 with tod 3
             /***********/
             Element B138 = document.createElement("B4");
-            d301.appendChild(B138);
+            d302.appendChild(B138);
 
             Attr B138attr1 = document.createAttribute("TOD");
             B138attr1.setValue("3");
@@ -2710,7 +2641,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //8th B4 with tod 2
             /***********/
             Element B139 = document.createElement("B4");
-            d301.appendChild(B139);
+            d302.appendChild(B139);
 
             Attr B139attr1 = document.createAttribute("TOD");
             B139attr1.setValue("3");
