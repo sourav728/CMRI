@@ -162,7 +162,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //H(27061905170058 )
                         line3 = FileUtils.readLines(file).get(3).trim();
                         line3 = line3.substring(2, line3.indexOf(" "));
-                        getSetValues.setG2(line3);
+                        StringBuilder sb = new StringBuilder(line3.substring(0,2));
+                        sb.append("-");
+                        sb.append(line3.substring(2,4));
+                        sb.append("-");
+                        sb.append(line3.substring(4,6));
+                        sb.append(" ");
+                        sb.append(line3.substring(8,10));
+                        sb.append(":");
+                        sb.append(line3.substring(10,12));
+                        sb.append(":");
+                        sb.append(line3.substring(12,14));
+
+                        getSetValues.setG2(sb.toString());
 
                         //For H(3 1.00 1.00 5 0 0E K A )
                         line4 = FileUtils.readLines(file).get(4).trim();
@@ -1677,7 +1689,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B90attr3.setValue("0");
             B90.setAttributeNode(B90attr3);
 
-            //2nd B6
+            //2nd B9
             Element B91 = document.createElement("B9");
             d301.appendChild(B91);
 
@@ -1757,7 +1769,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B95.setAttributeNode(B95attr3);
 
             //5th B10 tod 3
-            Element B96 = document.createElement("B4");
+            Element B96 = document.createElement("B10");
             d301.appendChild(B96);
 
             Attr B96attr1 = document.createAttribute("TOD");
@@ -1790,7 +1802,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             /*************/
             /******START*****/
             //7th B10 tod 3
-            Element B98 = document.createElement("B4");
+            Element B98 = document.createElement("B10");
             d301.appendChild(B98);
 
             Attr B98attr1 = document.createAttribute("TOD");
@@ -1806,7 +1818,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             B98.setAttributeNode(B98attr3);
 
             //8th B10 tod 3
-            Element B99 = document.createElement("B4");
+            Element B99 = document.createElement("B10");
             d301.appendChild(B99);
 
             Attr B99attr1 = document.createAttribute("TOD");
