@@ -18,6 +18,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class SplashActivity extends AppCompatActivity {
     public static final int RequestPermissionCode = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void startup() {
-        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
@@ -81,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
             case RequestPermissionCode:
                 if (grantResults.length > 0) {
                     boolean ReadStoragePermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    if ( ReadStoragePermission ) {
+                    if (ReadStoragePermission) {
                         startup();
                     } else {
                         Toast.makeText(SplashActivity.this, "Required All Permissions..", Toast.LENGTH_SHORT).show();
