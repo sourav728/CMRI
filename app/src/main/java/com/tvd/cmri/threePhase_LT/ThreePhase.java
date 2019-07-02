@@ -26,6 +26,8 @@ import android.widget.Toast;
 import com.tvd.cmri.R;
 import com.tvd.cmri.service.UsbService;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +35,9 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ThreePhase extends AppCompatActivity {
@@ -80,7 +85,7 @@ public class ThreePhase extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     boolean pres_read = false, previous_read = false, full_reading = false;
-    private String filename = "";
+    private String filename = "", line2 = "";
 
     private final ServiceConnection usbConnection = new ServiceConnection() {
         @Override
@@ -469,6 +474,8 @@ public class ThreePhase extends AppCompatActivity {
                 while (line != null) {
                     line = reader.readLine();
                     if (line.equals("H")) {
+                        line2 = FileUtils.readLines(reportFile).get(2).trim();
+                        line2 = line2.substring(2, line2.indexOf(" "));
                         progressDialog.setCancelable(false);
                         progressDialog.setMessage("Fetching Data.." + "\n" + "Please Wait..");
                         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -478,6 +485,7 @@ public class ThreePhase extends AppCompatActivity {
                     if (line.equals("!")) {
                         Toast.makeText(this, "Reading completed.." + "\n" + "Please find the text file..", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
+                        rename_textfile();
                     }
 
                 }
@@ -488,4 +496,28 @@ public class ThreePhase extends AppCompatActivity {
 
     }
 
+    private void rename_textfile() {
+        File dir = new File(Environment.getExternalStorageDirectory(),
+                "Opticals_3Phase");
+        if (pres_read) {
+            filename = "Optical_Presreading" + ".txt";
+        } else if (previous_read) {
+            filename = "Optical_Prevreading" + ".txt";
+        } else if (full_reading) {
+            filename = "Optical_Fullreading" + ".txt";
+        }
+
+        File reportFile = new File(dir, filename);
+        try {
+            if (reportFile.exists()) {
+                File from = new File(dir, filename);
+                File to = new File(dir, line2 + "_" + (new SimpleDateFormat("ddMMyyyy_HHmmss", Locale
+                        .getDefault())).format(new Date())+"_" + filename);
+                if (from.exists())
+                    from.renameTo(to);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
