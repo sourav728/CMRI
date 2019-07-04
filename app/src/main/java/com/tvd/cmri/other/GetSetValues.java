@@ -26,42 +26,62 @@ public class GetSetValues {
     private String line12ki_second="";
     private String line12ki_third="";
     private String line12ki_fourth="";
+    private String line12ki_fifth="";
+    private String line12ki_sixth="";
 
     private String line13ki_first="";
     private String line13ki_second="";
     private String line13ki_third ="";
     private String line13ki_fourth="";
+    private String line13ki_fifth="";
 
     private String line14ki_first="";
     private String line14ki_second="";
     private String line14ki_third="";
     private String line14ki_fourth="";
+    private String line14ki_fifth="";
 
     private String line15ki_first="";
     private String line15ki_second="";
     private String line15ki_third="";
     private String line15ki_fourth="";
-
+    private String line15ki_fifth="";
 
     private String line16ki_second="";
+    private String line16ki_third="";
+    private String line16ki_fourth="";
+
     private String line17ki_second="";
+    private String line17ki_third="";
+    private String line17ki_fourth="";
+
     private String line18ki_second="";
+    private String line18ki_third="";
+    private String line18ki_fourth="";
+
     private String line19ki_second="";
+    private String line19ki_third ="";
+    private String line19ki_fourth="";
+
+    private String line24ki_fifth="";
 
     private String line21ki_first="";
     private String line21ki_second="";
     private String line21ki_third="";
     private String line21ki_fourth="";
+    private String line21ki_fifth="";
 
     private String line22ki_first="";
     private String line22ki_second="";
     private String line22ki_third="";
     private String line22ki_fourth="";
+    private String line22ki_fifth="";
 
     private String line23ki_first="";
     private String line23ki_second="";
     private String line23ki_third="";
     private String line23ki_fourth="";
+    private String line23ki_fifth="";
 
     private String line24ki_first="";
     private String line24ki_second="";
@@ -74,10 +94,16 @@ public class GetSetValues {
     private String line25ki_fourth="";
 
     private String line26ki_second="";
+    private String line26ki_third="";
+    private String line26ki_fourth="";
 
     private String line27ki_second="";
+    private String line27ki_third="";
+    private String line27ki_fourth="";
 
     private String line28ki_second="";
+    private String line28ki_third="";
+    private String line28ki_fourth="";
 
     private String line29ki_second="";
 
@@ -591,5 +617,189 @@ public class GetSetValues {
 
     public void setLine21ki_fourth(String line21ki_fourth) {
         this.line21ki_fourth = line21ki_fourth;
+    }
+
+    public String getLine12ki_fifth() {
+        return line12ki_fifth;
+    }
+
+    public void setLine12ki_fifth(String line12ki_fifth) {
+        this.line12ki_fifth = line12ki_fifth;
+    }
+
+    public String getLine13ki_fifth() {
+        return line13ki_fifth;
+    }
+
+    public void setLine13ki_fifth(String line13ki_fifth) {
+        this.line13ki_fifth = line13ki_fifth;
+    }
+
+    public String getLine14ki_fifth() {
+        return line14ki_fifth;
+    }
+
+    public void setLine14ki_fifth(String line14ki_fifth) {
+        this.line14ki_fifth = line14ki_fifth;
+    }
+
+    public String getLine15ki_fifth() {
+        return line15ki_fifth;
+    }
+
+    public void setLine15ki_fifth(String line15ki_fifth) {
+        this.line15ki_fifth = line15ki_fifth;
+    }
+
+    public String getLine21ki_fifth() {
+        return line21ki_fifth;
+    }
+
+    public void setLine21ki_fifth(String line21ki_fifth) {
+        this.line21ki_fifth = line21ki_fifth;
+    }
+
+    public String getLine22ki_fifth() {
+        return line22ki_fifth;
+    }
+
+    public void setLine22ki_fifth(String line22ki_fifth) {
+        this.line22ki_fifth = line22ki_fifth;
+    }
+
+    public String getLine23ki_fifth() {
+        return line23ki_fifth;
+    }
+
+    public void setLine23ki_fifth(String line23ki_fifth) {
+        this.line23ki_fifth = line23ki_fifth;
+    }
+
+    public String getLine24ki_fifth() {
+        return line24ki_fifth;
+    }
+
+    public void setLine24ki_fifth(String line24ki_fifth) {
+        this.line24ki_fifth = line24ki_fifth;
+    }
+
+    public String getLine16ki_third() {
+        return line16ki_third;
+    }
+
+    public void setLine16ki_third(String line16ki_third) {
+        this.line16ki_third = line16ki_third;
+    }
+
+    public String getLine16ki_fourth() {
+        return line16ki_fourth;
+    }
+
+    public void setLine16ki_fourth(String line16ki_fourth) {
+        this.line16ki_fourth = line16ki_fourth;
+    }
+
+    public String getLine17ki_third() {
+        return line17ki_third;
+    }
+
+    public void setLine17ki_third(String line17ki_third) {
+        this.line17ki_third = line17ki_third;
+    }
+
+    public String getLine17ki_fourth() {
+        return line17ki_fourth;
+    }
+
+    public void setLine17ki_fourth(String line17ki_fourth) {
+        this.line17ki_fourth = line17ki_fourth;
+    }
+
+    public String getLine18ki_third() {
+        return line18ki_third;
+    }
+
+    public void setLine18ki_third(String line18ki_third) {
+        this.line18ki_third = line18ki_third;
+    }
+
+    public String getLine18ki_fourth() {
+        return line18ki_fourth;
+    }
+
+    public void setLine18ki_fourth(String line18ki_fourth) {
+        this.line18ki_fourth = line18ki_fourth;
+    }
+
+    public String getLine19ki_third() {
+        return line19ki_third;
+    }
+
+    public void setLine19ki_third(String line19ki_third) {
+        this.line19ki_third = line19ki_third;
+    }
+
+    public String getLine19ki_fourth() {
+        return line19ki_fourth;
+    }
+
+    public void setLine19ki_fourth(String line19ki_fourth) {
+        this.line19ki_fourth = line19ki_fourth;
+    }
+
+    public String getLine26ki_third() {
+        return line26ki_third;
+    }
+
+    public void setLine26ki_third(String line26ki_third) {
+        this.line26ki_third = line26ki_third;
+    }
+
+    public String getLine26ki_fourth() {
+        return line26ki_fourth;
+    }
+
+    public void setLine26ki_fourth(String line26ki_fourth) {
+        this.line26ki_fourth = line26ki_fourth;
+    }
+
+    public String getLine27ki_third() {
+        return line27ki_third;
+    }
+
+    public void setLine27ki_third(String line27ki_third) {
+        this.line27ki_third = line27ki_third;
+    }
+
+    public String getLine27ki_fourth() {
+        return line27ki_fourth;
+    }
+
+    public void setLine27ki_fourth(String line27ki_fourth) {
+        this.line27ki_fourth = line27ki_fourth;
+    }
+
+    public String getLine28ki_third() {
+        return line28ki_third;
+    }
+
+    public void setLine28ki_third(String line28ki_third) {
+        this.line28ki_third = line28ki_third;
+    }
+
+    public String getLine28ki_fourth() {
+        return line28ki_fourth;
+    }
+
+    public void setLine28ki_fourth(String line28ki_fourth) {
+        this.line28ki_fourth = line28ki_fourth;
+    }
+
+    public String getLine12ki_sixth() {
+        return line12ki_sixth;
+    }
+
+    public void setLine12ki_sixth(String line12ki_sixth) {
+        this.line12ki_sixth = line12ki_sixth;
     }
 }
