@@ -1,12 +1,9 @@
 package com.tvd.cmri.invoke;
 
-
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
-
-import com.tvd.cmri.other.GetSetValues;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

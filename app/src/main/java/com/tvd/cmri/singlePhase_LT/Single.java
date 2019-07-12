@@ -48,7 +48,7 @@ public class Single extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            switch (intent.getAction()) {
+            switch (Objects.requireNonNull(intent.getAction())) {
 
                 case UsbService.ACTION_USB_PERMISSION_GRANTED: // USB PERMISSION GRANTED
                     Toast.makeText(context, "USB Ready", Toast.LENGTH_SHORT).show();
@@ -71,7 +71,6 @@ public class Single extends AppCompatActivity {
     private android.support.v7.widget.Toolbar toolbar;
     private UsbService usbService;
     private TextView display;
-    //private EditText editText;
     private MyHandler mHandler;
     private Button btn_full_data, btn_previous_read, btn_pres_read;
     int i = 0;
