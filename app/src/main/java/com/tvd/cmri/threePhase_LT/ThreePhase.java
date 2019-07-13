@@ -25,7 +25,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tvd.cmri.LoginActivity;
+import com.tvd.cmri.MainActivity;
 import com.tvd.cmri.R;
+import com.tvd.cmri.invoke.SendingData;
 import com.tvd.cmri.other.FunctionCall;
 import com.tvd.cmri.other.GetSetValues;
 import com.tvd.cmri.service.UsbService;
@@ -61,10 +63,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import static com.tvd.cmri.other.Constant.LOGIN_FAILURE;
-import static com.tvd.cmri.other.Constant.LOGIN_SUCCESS;
+import static com.tvd.cmri.other.Constant.DESTINATION_UPLOAD_XML_PATH;
+import static com.tvd.cmri.other.Constant.DIR_UPLOAD;
+import static com.tvd.cmri.other.Constant.FILE_ENCODED_ERROR;
+import static com.tvd.cmri.other.Constant.FILE_ENCODED_SUCCESS;
 import static com.tvd.cmri.other.Constant.TEXT_GENERATION_FAILURE;
 import static com.tvd.cmri.other.Constant.TEXT_GENERATION_SUCCESS;
+import static com.tvd.cmri.other.Constant.XML_POSTING_FAILURE;
+import static com.tvd.cmri.other.Constant.XML_POSTING_SUCCESS;
 
 public class ThreePhase extends AppCompatActivity {
 
@@ -110,9 +116,11 @@ public class ThreePhase extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     boolean pres_read = false, previous_read = false, full_reading = false;
-    private String filename = "", line2 = "", path = "";
+    private String filename = "", line2 = "", path = "", mobileUploadPath = "", destinationPath = "";
     private FunctionCall fcall;
     private GetSetValues getSetValues;
+    private SendingData sendingData;
+
     String line_first, line_second, line_third, line_fourth, line_fifth, line_sixth, mtr_version;
     Element d3, d301, pId, utilitytype, di;
     ArrayList<GetSetValues> getSetValueslist;
@@ -122,6 +130,7 @@ public class ThreePhase extends AppCompatActivity {
     Ver4SB1F20 ver4SB1F20;
     Version_NED26 version_ned26;
 
+    private FunctionCall functionCall;
     Document document;
     boolean alreadyExecuted = false;
     Handler handler = new Handler(new Handler.Callback() {
@@ -138,6 +147,22 @@ public class ThreePhase extends AppCompatActivity {
                     break;
                 case TEXT_GENERATION_FAILURE:
                     Toast.makeText(ThreePhase.this, "TextFile Generation Failure!!", Toast.LENGTH_SHORT).show();
+                    break;
+                case FILE_ENCODED_SUCCESS:
+                    Toast.makeText(ThreePhase.this, "File Encoading Success" + "\n" + "uploading Files in server", Toast.LENGTH_SHORT).show();
+                    call_file_upload_api();
+                    break;
+                case FILE_ENCODED_ERROR:
+                    break;
+                case XML_POSTING_SUCCESS:
+                    progressDialog.dismiss();
+                    Toast.makeText(ThreePhase.this, "Xml Posting Success..", Toast.LENGTH_SHORT).show();
+                    move_xml_file();
+                    break;
+
+                case XML_POSTING_FAILURE:
+                    progressDialog.dismiss();
+                    Toast.makeText(ThreePhase.this, "Xml POsting Failure!!", Toast.LENGTH_SHORT).show();
                     break;
             }
             return false;
@@ -362,12 +387,15 @@ public class ThreePhase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 display.setText("");
+                call_encode();
             }
         });
     }
 
     @SuppressLint("CommitPrefEdits")
     private void initialize() {
+        sendingData = new SendingData();
+        functionCall = new FunctionCall();
         getSetValueslist = new ArrayList<>();
         getSetValues = new GetSetValues();
         fcall = new FunctionCall();
@@ -657,7 +685,7 @@ public class ThreePhase extends AppCompatActivity {
                         //H(01000B )
                         line6 = FileUtils.readLines(file).get(6).trim();
                         if (previous_read)
-                        line6 = line6.substring(2, line6.indexOf("B"));
+                            line6 = line6.substring(2, line6.indexOf("B"));
                         else line6 = line6.substring(2, line6.indexOf("P"));
                         getSetValues.setG1195(line6);
 
@@ -756,17 +784,16 @@ public class ThreePhase extends AppCompatActivity {
                                 break;
 
                             case "ver4SB1F.20":
-                                int a=0, b=0;
+                                int a = 0, b = 0;
                                 getSetValueslist.clear();
-                                if (previous_read){
+                                if (previous_read) {
                                     a = 15;
                                     b = 30;
-                                }
-                                else{
-                                    a =14;
+                                } else {
+                                    a = 14;
                                     b = 29;
                                 }
-                                for ( int i = a; i <= b; i++) {
+                                for (int i = a; i <= b; i++) {
                                     GetSetValues getSetValues = new GetSetValues();
                                     line_first = "";
                                     line_second = "";
@@ -991,4 +1018,22 @@ public class ThreePhase extends AppCompatActivity {
         }
     }
 
+    private void call_encode() {
+        mobileUploadPath = functionCall.filepath(DIR_UPLOAD + File.separator);
+        functionCall.encode(mobileUploadPath + File.separator + "14416062_12072019_180522_Optical_Prevreading.xml", getSetValues, handler);
+    }
+
+
+    //For uploading Text and XML files
+    private void call_file_upload_api() {
+        functionCall.setProgressDialog(progressDialog, "Posting Data", "Please Wait");
+        //For Calling Xml posting Service and text files too
+        SendingData.XMLPosting xmlposting = sendingData.new XMLPosting(handler);
+        xmlposting.execute("1234567890", "123", "14416062_12072019_180522_Optical_Prevreading.xml", "123.34", "257.54", "dummy", "Bangalore", getSetValues.getResult());
+    }
+
+    private void move_xml_file() {
+        destinationPath = functionCall.filepath(DESTINATION_UPLOAD_XML_PATH + File.separator);
+        functionCall.move_files(mobileUploadPath, "14416062_12072019_180522_Optical_Prevreading.xml", destinationPath, "14416062_12072019_180522_Optical_Prevreading.xml");
+    }
 }

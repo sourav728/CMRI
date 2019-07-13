@@ -132,6 +132,8 @@ public class GetSetValues {
     private String line28ki_fourth = "";
 
     private String line29ki_second = "";
+    private String filename="";
+    private String result="";
 
     public String getFile() {
         return file;
@@ -1019,5 +1021,21 @@ public class GetSetValues {
 
     public void setLine28ki_first(String line28ki_first) {
         this.line28ki_first = line28ki_first;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }

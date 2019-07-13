@@ -103,4 +103,43 @@ public class SendingData {
         }
     }
 
+    //For posting text and xml files
+    @SuppressLint("StaticFieldLeak")
+    public class XMLPosting extends AsyncTask<String, String, String> {
+        String requestUrl = "";
+        Handler handler;
+        public XMLPosting(Handler handler) {
+            this.handler = handler;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            HashMap<String, String> datamap = new HashMap<>();
+            datamap.put("EMINO", params[0]);
+            datamap.put("EMPID", params[1]);
+            datamap.put("PHOTO", params[2]);
+            datamap.put("LOG", params[3]);
+            datamap.put("LAT", params[4]);
+            datamap.put("REMARK", params[5]);
+            datamap.put("ADDRESS", params[6]);
+            datamap.put("Encodefile", params[7]);
+            try {
+                requestUrl = UrlPostConnection("http://bc_service2.hescomtrm.com/TicketingService.asmx/Spot_Attendance_Details", datamap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return requestUrl;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            receivingData.get_xml_response(result, handler);
+        }
+    }
+
 }
