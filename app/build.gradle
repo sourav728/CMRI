@@ -1,19 +1,38 @@
 apply plugin: 'com.android.application'
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 1
+def code = 1
 
 android {
+    signingConfigs {
+        config {
+
+        }
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.tvd.cmri"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode code
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def formattedDate = new Date().format('ddMMMyyyy_HHmm')
+                    def newName = output.outputFile.name
+                    newName = newName.replace("-release", "_${versionMajor}.${versionMinor}.${versionPatch}_" + formattedDate)
+                    outputFileName = newName
+                }
+            }
         }
     }
 }

@@ -349,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (File file : files) {
             if (file.isFile()) {
                 GetSetValues getSetValues = new GetSetValues();
-                getSetValues.setFile(file.getName());
+               // getSetValues.setFile(file.getName());
                 arrayList.add(getSetValues);
             }
 

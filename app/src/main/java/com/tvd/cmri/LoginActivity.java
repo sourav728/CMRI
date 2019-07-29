@@ -2,10 +2,10 @@ package com.tvd.cmri;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,16 +23,20 @@ import com.tvd.cmri.other.GetSetValues;
 
 import static com.tvd.cmri.other.Constant.LOGIN_FAILURE;
 import static com.tvd.cmri.other.Constant.LOGIN_SUCCESS;
+import static com.tvd.cmri.other.Constant.SPREF;
+import static com.tvd.cmri.other.Constant.SPREF_USERNAME;
 
 public class LoginActivity extends AppCompatActivity {
     Button button_login, button_cancel;
     SendingData sendingData;
     GetSetValues getSetValues;
-    TextInputEditText username;
+    EditText username;
     EditText password;
     FunctionCall functionCall;
     RelativeLayout relativeLayout;
     ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
@@ -40,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 case LOGIN_SUCCESS:
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                    editor.putString(SPREF_USERNAME, getSetValues.getUsername());
                     moveto_next();
                     break;
                 case LOGIN_FAILURE:
@@ -54,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_layout2);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window w = getWindow(); // in Activity's onCreate() for instance
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (!TextUtils.isEmpty(username.getText().toString())) {
                         if (!TextUtils.isEmpty(password.getText().toString())) {
                             functionCall.setProgressDialog(progressDialog, "Checking Credentials", "Please Wait..");
-                            SendingData.Login login = sendingData.new Login(handler);
+                            SendingData.Login login = sendingData.new Login(handler, getSetValues);
                             login.execute(username.getText().toString(), password.getText().toString());
                         } else
                             functionCall.setSnackBar(LoginActivity.this, relativeLayout, "Enter Password!!");
@@ -80,20 +85,23 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void moveto_next(){
+    private void moveto_next() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
     private void initialize() {
         progressDialog = new ProgressDialog(this);
         getSetValues = new GetSetValues();
         sendingData = new SendingData();
         button_login = findViewById(R.id.btn_login);
         button_cancel = findViewById(R.id.btn_cancel);
-        username = findViewById(R.id.txtinput_username);
-        password = findViewById(R.id.edit_password);
+        username = findViewById(R.id.emailEdittxt);
+        password = findViewById(R.id.passEdittxt);
         functionCall = new FunctionCall();
         relativeLayout = findViewById(R.id.relative_layout);
+        sharedPreferences = getSharedPreferences(SPREF, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 }

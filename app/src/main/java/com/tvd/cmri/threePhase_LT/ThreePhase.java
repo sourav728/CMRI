@@ -1,5 +1,6 @@
 package com.tvd.cmri.threePhase_LT;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -9,12 +10,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -63,10 +67,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import static com.tvd.cmri.other.Constant.DESTINATION_UPLOAD_TEXT_PATH;
 import static com.tvd.cmri.other.Constant.DESTINATION_UPLOAD_XML_PATH;
+import static com.tvd.cmri.other.Constant.DIR_TEXT_UPLOAD;
 import static com.tvd.cmri.other.Constant.DIR_UPLOAD;
 import static com.tvd.cmri.other.Constant.FILE_ENCODED_ERROR;
 import static com.tvd.cmri.other.Constant.FILE_ENCODED_SUCCESS;
+import static com.tvd.cmri.other.Constant.SPREF;
+import static com.tvd.cmri.other.Constant.SPREF_USERNAME;
 import static com.tvd.cmri.other.Constant.TEXT_GENERATION_FAILURE;
 import static com.tvd.cmri.other.Constant.TEXT_GENERATION_SUCCESS;
 import static com.tvd.cmri.other.Constant.XML_POSTING_FAILURE;
@@ -114,13 +122,16 @@ public class ThreePhase extends AppCompatActivity {
     private TextView connect_status;
     private static final String PREFERENCE = "CMRI";
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences2;
     private SharedPreferences.Editor editor;
     boolean pres_read = false, previous_read = false, full_reading = false;
-    private String filename = "", line2 = "", path = "", mobileUploadPath = "", destinationPath = "";
+    private String filename = "", line2 = "", path = "", path2 = "", mobileUploadPath = "", mobileUploadPath2 = "", destinationPath = "",
+            generated_textfile_name = "", device_id = "";
     private FunctionCall fcall;
     private GetSetValues getSetValues;
     private SendingData sendingData;
-
+    private String[] names;
+    private ArrayList<GetSetValues> arrayList;
     String line_first, line_second, line_third, line_fourth, line_fifth, line_sixth, mtr_version;
     Element d3, d301, pId, utilitytype, di;
     ArrayList<GetSetValues> getSetValueslist;
@@ -129,7 +140,6 @@ public class ThreePhase extends AppCompatActivity {
     version_DTDDN version_dtddn;
     Ver4SB1F20 ver4SB1F20;
     Version_NED26 version_ned26;
-
     private FunctionCall functionCall;
     Document document;
     boolean alreadyExecuted = false;
@@ -158,6 +168,7 @@ public class ThreePhase extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(ThreePhase.this, "Xml Posting Success..", Toast.LENGTH_SHORT).show();
                     move_xml_file();
+                    move_text_file();
                     break;
 
                 case XML_POSTING_FAILURE:
@@ -387,12 +398,12 @@ public class ThreePhase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 display.setText("");
-                call_encode();
+                //call_encode();
             }
         });
     }
 
-    @SuppressLint("CommitPrefEdits")
+    @SuppressLint({"CommitPrefEdits", "HardwareIds"})
     private void initialize() {
         sendingData = new SendingData();
         functionCall = new FunctionCall();
@@ -415,6 +426,7 @@ public class ThreePhase extends AppCompatActivity {
         btn_pres_read = findViewById(R.id.buttonSend);
 
         sharedPreferences = getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE);
+        sharedPreferences2 = getSharedPreferences(SPREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         ver4SB1F20 = new Ver4SB1F20();
@@ -422,7 +434,21 @@ public class ThreePhase extends AppCompatActivity {
         version_ned26 = new Version_NED26();
         verEAJ8_02 = new VerEAJ8_02();
         path = fcall.filepath("Xml_file");
+        path2 = fcall.filepath("Text_file");
 
+        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (ActivityCompat.checkSelfPermission(ThreePhase.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        if (tm != null)
+            device_id = tm.getDeviceId();
     }
 
     @Override
@@ -524,7 +550,7 @@ public class ThreePhase extends AppCompatActivity {
         try {
             //Gets the Android external storage directory & Create new folder Crash_Reports
             File dir = new File(Environment.getExternalStorageDirectory(),
-                    "Opticals_3Phase");
+                    "Opticals_3Phase" + File.separator + "Text_file");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -535,7 +561,7 @@ public class ThreePhase extends AppCompatActivity {
             } else if (full_reading) {
                 filename = "Optical_Fullreading" + ".txt";
             }
-            File reportFile = new File(dir, filename);
+            File reportFile = new File(dir + File.separator, filename);
             FileWriter fileWriter = new FileWriter(reportFile);
             fileWriter.append(currentStacktrace);
             fileWriter.flush();
@@ -550,7 +576,7 @@ public class ThreePhase extends AppCompatActivity {
         FileInputStream is;
         BufferedReader reader;
         File dir = new File(Environment.getExternalStorageDirectory(),
-                "Opticals_3Phase");
+                "Opticals_3Phase" + File.separator + "Text_file");
 
         if (pres_read) {
             filename = "Optical_Presreading" + ".txt";
@@ -559,7 +585,9 @@ public class ThreePhase extends AppCompatActivity {
         } else if (full_reading) {
             filename = "Optical_Fullreading" + ".txt";
         }
-        File reportFile = new File(dir, filename);
+
+        File reportFile = new File(dir + File.separator, filename);
+
         try {
             if (reportFile.exists()) {
                 is = new FileInputStream(reportFile);
@@ -591,7 +619,7 @@ public class ThreePhase extends AppCompatActivity {
 
     private void rename_textfile() {
         File dir = new File(Environment.getExternalStorageDirectory(),
-                "Opticals_3Phase");
+                "Opticals_3Phase" + File.separator + "Text_file");
         if (pres_read) {
             filename = "Optical_Presreading" + ".txt";
         } else if (previous_read) {
@@ -600,14 +628,13 @@ public class ThreePhase extends AppCompatActivity {
             filename = "Optical_Fullreading" + ".txt";
         }
 
-        File reportFile = new File(dir, filename);
+        File reportFile = new File(dir + File.separator, filename);
         File to = null;
-        String generated_textfile_name = line2 + "_" + (new SimpleDateFormat("ddMMyyyy_HHmmss", Locale
+        generated_textfile_name = line2 + "_" + (new SimpleDateFormat("ddMMyyyy_HHmmss", Locale
                 .getDefault())).format(new Date()) + "_" + filename;
         try {
             if (reportFile.exists()) {
                 File from = new File(dir, filename);
-
                 to = new File(dir, generated_textfile_name);
                 if (from.exists())
                     from.renameTo(to);
@@ -616,13 +643,12 @@ public class ThreePhase extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Toast.makeText(ThreePhase.this, "File Name " + generated_textfile_name, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ThreePhase.this, "File Name " + generated_textfile_name, Toast.LENGTH_SHORT).show();
         check_optical_text_file(generated_textfile_name);
     }
 
-
     private void check_optical_text_file(String filename) {
-        String path2 = fcall.filepath("Optical.txt");
+        String path2 = fcall.filepath("");
         File file = new File(path2);
         if (file.exists()) {
             readfile(filename);
@@ -633,15 +659,19 @@ public class ThreePhase extends AppCompatActivity {
 
     public void readfile(String filename) {
 
-        String line2, line3, line4, line5, line6, line10, line12, line15;
-        File sdcard = new File(fcall.filepath(""));
+        String line1, line2, line3, line4, line5, line6, line10, line12, line15;
+        File sdcard = new File(fcall.filepath("") + File.separator + "Text_file");
 
         for (File f : sdcard.listFiles()) {
             if (f.isFile()) {
                 String name = f.getName();
                 if (name.equals(filename)) {
-                    File file = fcall.filestorepath("", name);
+                    File file = fcall.filestorepath("" + File.separator + "Text_file", name);
                     try {
+                        //For fetching company details
+                        line1 = FileUtils.readLines(file).get(1).trim();
+                        getSetValues.setProduction_company(line1);
+
                         //For fetching particular line from text file
                         //H(09166245     )
                         line2 = FileUtils.readLines(file).get(2).trim();
@@ -1012,6 +1042,7 @@ public class ThreePhase extends AppCompatActivity {
             out.append(xmlBioData);
             out.append("\r\n");
             out.close();
+            call_encode();
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), "Xml generation failed!!", Toast.LENGTH_LONG).show();
@@ -1020,20 +1051,34 @@ public class ThreePhase extends AppCompatActivity {
 
     private void call_encode() {
         mobileUploadPath = functionCall.filepath(DIR_UPLOAD + File.separator);
-        functionCall.encode(mobileUploadPath + File.separator + "14416062_12072019_180522_Optical_Prevreading.xml", getSetValues, handler);
-    }
+        mobileUploadPath2 = functionCall.filepath(DIR_TEXT_UPLOAD + File.separator);
 
+      /*  functionCall.encode(mobileUploadPath + File.separator + "14416062_12072019_180522_Optical_Prevreading.xml", getSetValues, handler, "xml");
+        functionCall.encode(mobileUploadPath2 + File.separator + "14416062_12072019_180522_Optical_Prevreading.txt", getSetValues, handler, "text");*/
+        Toast.makeText(this, "Xml file name " + generated_textfile_name.substring(0, generated_textfile_name.length() - 4) + ".xml", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Text file name " + generated_textfile_name, Toast.LENGTH_SHORT).show();
+
+        functionCall.encode(mobileUploadPath + File.separator + generated_textfile_name.substring(0, generated_textfile_name.length() - 4) + ".xml", getSetValues, handler, "xml");
+        functionCall.encode(mobileUploadPath2 + File.separator + generated_textfile_name, getSetValues, handler, "text");
+    }
 
     //For uploading Text and XML files
     private void call_file_upload_api() {
         functionCall.setProgressDialog(progressDialog, "Posting Data", "Please Wait");
         //For Calling Xml posting Service and text files too
         SendingData.XMLPosting xmlposting = sendingData.new XMLPosting(handler);
-        xmlposting.execute("1234567890", "123", "14416062_12072019_180522_Optical_Prevreading.xml", "123.34", "257.54", "dummy", "Bangalore", getSetValues.getResult());
+        //xmlposting.execute("Sourav", getSetValues.getProduction_company(), mtr_version, getSetValues.getResult2(), getSetValues.getResult(), device_id, getSetValues.getFile2(), getSetValues.getFile());
+        xmlposting.execute(sharedPreferences2.getString(SPREF_USERNAME,""), getSetValues.getProduction_company(), mtr_version, getSetValues.getResult2(), getSetValues.getResult(), device_id, generated_textfile_name, generated_textfile_name.substring(0, generated_textfile_name.length() - 4) + ".xml");
+        //xmlposting.execute("Sourav", "L&T", "ver08", getSetValues.getResult2(), getSetValues.getResult(), device_id,"14416062_12072019_180522_Optical_Prevreading.txt" , "14416062_12072019_180522_Optical_Prevreading.xml");
     }
 
     private void move_xml_file() {
         destinationPath = functionCall.filepath(DESTINATION_UPLOAD_XML_PATH + File.separator);
-        functionCall.move_files(mobileUploadPath, "14416062_12072019_180522_Optical_Prevreading.xml", destinationPath, "14416062_12072019_180522_Optical_Prevreading.xml");
+        functionCall.move_files(mobileUploadPath, generated_textfile_name.substring(0, generated_textfile_name.length() - 4) + ".xml", destinationPath, generated_textfile_name.substring(0, generated_textfile_name.length() - 4) + ".xml");
+    }
+
+    private void move_text_file() {
+        destinationPath = functionCall.filepath(DESTINATION_UPLOAD_TEXT_PATH + File.separator);
+        functionCall.move_files(mobileUploadPath2, generated_textfile_name, destinationPath, generated_textfile_name);
     }
 }

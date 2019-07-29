@@ -2,6 +2,9 @@ package com.tvd.cmri.other;
 
 public class GetSetValues {
     String file = "";
+    String file2 ="";
+    String production_company="";
+    String username="";
 
     private String g1 = "";
     private String g2 = "";
@@ -134,6 +137,7 @@ public class GetSetValues {
     private String line29ki_second = "";
     private String filename="";
     private String result="";
+    private String result2="";
 
     public String getFile() {
         return file;
@@ -1037,5 +1041,37 @@ public class GetSetValues {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getResult2() {
+        return result2;
+    }
+
+    public void setResult2(String result2) {
+        this.result2 = result2;
+    }
+
+    public String getFile2() {
+        return file2;
+    }
+
+    public void setFile2(String file2) {
+        this.file2 = file2;
+    }
+
+    public String getProduction_company() {
+        return production_company;
+    }
+
+    public void setProduction_company(String production_company) {
+        this.production_company = production_company;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

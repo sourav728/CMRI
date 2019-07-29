@@ -3,6 +3,8 @@ package com.tvd.cmri.invoke;
 import android.os.Handler;
 
 import com.tvd.cmri.other.FunctionCall;
+import com.tvd.cmri.other.GetSetValues;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,7 +59,7 @@ public class ReceivingData {
         return value;
     }
 
-    public void get_Details(String result, android.os.Handler handler) {
+    public void get_Details(String result, android.os.Handler handler, GetSetValues getSetValues) {
         result = parseServerXML(result);
         JSONArray jsonArray;
         try {
@@ -65,6 +67,8 @@ public class ReceivingData {
             JSONObject jsonObject = jsonArray.getJSONObject(0);
             String message = jsonObject.getString("message");
             if (message.equals("Success")) {
+                String username = jsonObject.getString("USERNAME");
+                getSetValues.setUsername(username);
                 handler.sendEmptyMessage(LOGIN_SUCCESS);
             } else handler.sendEmptyMessage(LOGIN_FAILURE);
         } catch (JSONException e) {
@@ -76,9 +80,12 @@ public class ReceivingData {
     //For getting xml_posting response
     void get_xml_response(String result, Handler handler) {
         result = parseServerXML(result);
-        functionsCall.logStatus("Employee details status: " + result);
+        functionsCall.logStatus("XML And Text file posting status: " + result);
+        JSONArray jsonArray;
         try {
-            JSONObject jsonObject = new JSONObject(result);
+            jsonArray = new JSONArray(result);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            //JSONObject jsonObject = new JSONObject(result);
             String message = jsonObject.getString("message");
             if (message.equals("Success"))
                 handler.sendEmptyMessage(XML_POSTING_SUCCESS);

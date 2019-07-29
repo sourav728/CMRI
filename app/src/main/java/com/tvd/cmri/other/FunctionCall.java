@@ -110,8 +110,8 @@ public class FunctionCall {
         return encodedBase64;
     }
 
-    public void encode(String filename, GetSetValues getSetValues, Handler handler) {
-        new EncodeFile(filename, getSetValues, handler).execute();
+    public void encode(String filename, GetSetValues getSetValues, Handler handler, String format) {
+        new EncodeFile(filename, getSetValues, handler, format).execute();
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -119,11 +119,12 @@ public class FunctionCall {
         private String filename;
         private GetSetValues getSetValues;
         private Handler handler;
-
-        EncodeFile(String filename, GetSetValues getSetValues, Handler handler) {
+        private String format;
+        EncodeFile(String filename, GetSetValues getSetValues, Handler handler, String format) {
             this.filename = filename;
             this.getSetValues = getSetValues;
             this.handler = handler;
+            this.format = format;
         }
 
         @Override
@@ -136,7 +137,9 @@ public class FunctionCall {
             super.onPostExecute(result);
             getSetValues.setFilename(filename);
             if (!TextUtils.isEmpty(result)) {
+                if (format.equals("xml"))
                 getSetValues.setResult(result);
+                else getSetValues.setResult2(result);
                 handler.sendEmptyMessage(FILE_ENCODED_SUCCESS);
             } else handler.sendEmptyMessage(FILE_ENCODED_ERROR);
         }
